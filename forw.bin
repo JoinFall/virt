@@ -1,0 +1,17 @@
+$ORIGIN .
+$TTL 604800	; 1 week
+site.test		IN SOA	my.site.test. root.site.test. (
+				6          ; serial
+				604800     ; refresh (1 week)
+				86400      ; retry (1 day)
+				2419200    ; expire (4 weeks)
+				604800     ; minimum (1 week)
+				)
+			NS	my.site.test.
+$ORIGIN site.test.
+deb11			A	192.168.1.12
+$TTL 300	; 5 minutes
+DESKTOP-BA88QV9		A	192.168.1.5
+			TXT	"319e837fd86f3e4ba526d4fb9d9df83fb2"
+$TTL 604800	; 1 week
+my			A	192.168.1.12

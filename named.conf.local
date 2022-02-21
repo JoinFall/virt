@@ -1,0 +1,25 @@
+//
+// Do any local configuration here
+//
+
+key DDNS_UPDATER {
+	algorithm HMAC-MD5.SIG-ALG.REG.INT;
+	secret "07E9gKC96mC7dpp4ZCYFbQ==";
+};
+
+zone "site.test" {
+	type master;
+	file "/var/lib/dns/forw.bin"; 
+	allow-update { key DDNS_UPDATER; };
+};
+
+
+//zone "1.168.192.in-addr.arpa" {
+//	type master;
+//	file "/var/lib/dns/rev_forw.dns";
+//}
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+

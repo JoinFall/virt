@@ -1,0 +1,13 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL	604800
+@	IN	SOA	site.test. root.site.test. (
+			      2		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@	IN	NS	site.test.
+12	IN	PTR	site.test.
