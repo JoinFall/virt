@@ -1,3 +1,0 @@
-#!/bin/bash
-/usr/sbin/iptables-restore < /etc/iptab/IPv4
-#Дриектория - /etc/network/if-pre-up.d/iptables
