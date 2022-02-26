@@ -1,0 +1,3 @@
+192.168.31.14 dev enp0s3 lladdr 08:00:27:6f:33:76 STALE
+192.168.31.211 dev enp0s3 lladdr 08:00:27:46:f0:3a STALE
+192.168.31.1 dev enp0s3 lladdr 28:d1:27:59:1c:63 STALE
