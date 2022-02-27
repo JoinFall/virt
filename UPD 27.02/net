@@ -1,0 +1,28 @@
+#!/usr/bin/python3
+
+from subprocess import run
+from re import finditer
+from ipaddress import ip_interface
+from argparse import ArgumentParser
+
+parser = ArgumentParser(prog="pars_ip")
+parser.add_argument("-c", "--count", type=int, help="Сколько бит выделить для подсЕти", default=1)
+parser.add_argument("-n", "--number", type=int, help="Какую подсеть из разбитых подсетей выдать", default=1)
+parser.add_argument("-i", "--interface", help="Какой интерфейс взять для разбития сети")
+arg_progr = parser.parse_args()
+
+command = run(["ip", "a"], capture_output=True, text=True)
+ip_tab = dict()
+_ = None
+patern = r": (?P<iface>\S*): |\s*inet (?P<net>(?P<ip>\S*)(?P<mask>\/\d*))" if arg_progr.interface == None else fr": (?P<iface>{arg_progr.interface}): |\s*inet (?P<net>(?P<ip>\S*)(?P<mask>\/\d*))"
+for i in finditer(patern, str(command.stdout)):
+    if i.group("iface"):
+        _ = i.group("iface")
+    elif _ != None:
+        ip_tab[int] = ip_interface(i.group("net")).network
+        break
+
+print(list(ip_tab[int].subnets(arg_progr.count))[arg_progr.number])
+
+
+#Путь -  /usr/bin/net

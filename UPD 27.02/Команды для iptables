@@ -1,0 +1,5 @@
+     1	iptables -P FORWARD DROP
+     2	iptables -A FORWARD -p icmp -s $(net -i enp0s8 -n 2) -j ACCEPT или  iptables -A FORWARD -p icmp -s 192.168.1.128/25 -j ACCEPT 
+     3	iptables -A FORWARD -p icmp -d $(net -i enp0s8 -n 2) -j ACCEPT или iptables -A FORWARD -p icmp -d 192.168.1.128/25  -j ACCEPT 
+     4	iptables -A FORWARD -d $(net -i enp0s8) -j ACCEPT или iptables -A FORWARD -d 192.168.1.0/25 -j ACCEPT 
+     5	iptables -A FORWARD -s $(net -i enp0s8) -j ACCEPT или iptables -A FORWARD -s 192.168.1.0/25 -j ACCEPT 
